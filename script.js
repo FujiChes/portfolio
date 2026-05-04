@@ -1,14 +1,19 @@
-// 1. Dito natin tinuturo ang tamang folder path
 const pageFiles = {
     'home': 'home.html',
-    'about': 'about.html', 
+    'about': 'about.html',
     'stack': 'stack.html',
     'certificates': 'certificates.html'
 };
 
 async function showPage(pageName) {
+    // Fallback to home if invalid page
+    if (!pageFiles[pageName]) pageName = 'home';
+
     const container = document.getElementById('content-area');
     if (!container) return;
+
+    // Save current page to URL hash (no page reload)
+    history.pushState(null, '', '#' + pageName);
 
     try {
         // Update active nav styles
@@ -16,29 +21,23 @@ async function showPage(pageName) {
             btn.classList.remove('text-yellow-400', 'bg-white/5');
             btn.classList.add('text-gray-500');
         });
-        
+
         const activeBtn = document.getElementById('nav-' + pageName);
         if (activeBtn) {
             activeBtn.classList.add('text-yellow-400', 'bg-white/5');
             activeBtn.classList.remove('text-gray-500');
         }
 
-        // FETCHING: Idinagdag natin ang tamang folder sa path
         const response = await fetch(pageFiles[pageName]);
         if (!response.ok) throw new Error('Page not found');
-        
+
         const html = await response.text();
-        
-        // Gagawin nating HTML ang text para makuha lang ang kailangan
         const parser = new DOMParser();
         const doc = parser.parseFromString(html, 'text/html');
-        
-        // Susubukan nating kunin ang <section>, kung wala, buong file ang kukunin
         const content = doc.querySelector('section') ? doc.querySelector('section').outerHTML : html;
-        
-        // Dito na papasok ang design sa gitna
+
         container.innerHTML = content;
-        
+
     } catch (error) {
         console.error('Error loading page:', error);
         container.innerHTML = `
@@ -52,9 +51,13 @@ async function showPage(pageName) {
     }
 }
 
-// Kapag nag-load ang website
+// Read hash from URL, default to 'home'
+function getPageFromHash() {
+    const hash = location.hash.replace('#', '').toLowerCase().trim();
+    return pageFiles[hash] ? hash : 'home';
+}
+
 document.addEventListener('DOMContentLoaded', () => {
-    // I-setup ang lahat ng buttons
     document.querySelectorAll('.nav-btn').forEach(btn => {
         btn.onclick = (e) => {
             e.preventDefault();
@@ -62,7 +65,12 @@ document.addEventListener('DOMContentLoaded', () => {
             showPage(pageId);
         };
     });
-    
-    // I-load ang home by default
-    showPage('home');
+
+    // On load: restore the page from URL hash
+    showPage(getPageFromHash());
+});
+
+// Handle browser back/forward buttons
+window.addEventListener('popstate', () => {
+    showPage(getPageFromHash());
 });

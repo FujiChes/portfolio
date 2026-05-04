@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chester Besin | Animated Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;900&family=Space+Grotesk:wght@300;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="flex flex-col md:flex-row bg-[#0a0a0a]">
+
+    <nav class="sidebar fixed bottom-0 left-0 w-full h-16 md:h-screen md:w-20 md:top-0 border-t md:border-r md:border-t-0 border-white/10 bg-[#050505] flex md:flex-col items-center z-50">
+        <div class="hidden md:block px-6 my-10 text-yellow-400 font-black text-3xl">CB</div>
+        <div class="flex md:flex-col justify-around md:justify-start space-y-0 md:space-y-4 w-full px-2">
+            <button onclick="showPage('home')" id="nav-home" class="nav-btn">
+                <i class="fa-solid fa-house"></i><span class="sidebar-text">Home</span>
+            </button>
+            <button onclick="showPage('about')" id="nav-about" class="nav-btn">
+                <i class="fa-solid fa-user"></i><span class="sidebar-text">About</span>
+            </button>
+            <button onclick="showPage('stack')" id="nav-stack" class="nav-btn">
+                <i class="fa-solid fa-code"></i><span class="sidebar-text">Tech Stack</span>
+            </button>
+            <button onclick="showPage('certificates')" id="nav-certificates" class="nav-btn">
+                <i class="fa-solid fa-certificate"></i><span class="sidebar-text">Certificates</span>
+            </button>
+        </div>
+    </nav>
+
+    <main id="content-area" class="w-full md:ml-20 min-h-screen"></main>
+
+    <script src="script.js"></script>
+</body>
+</html>

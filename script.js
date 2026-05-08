@@ -1,33 +1,36 @@
 const pageFiles = {
-    'home': 'home.html',
-    'about': 'about.html',
-    'stack': 'stack.html',
-    'certificates': 'certificates.html'
+    'home': '/home.html',
+    'about': '/about.html',
+    'stack': '/stack.html',
+    'certificates': '/certificates.html'
 };
 
+// Pages in order for clean URL matching
+const pageNames = Object.keys(pageFiles);
+
 async function showPage(pageName) {
-    // Fallback to home if invalid page
     if (!pageFiles[pageName]) pageName = 'home';
 
     const container = document.getElementById('content-area');
     if (!container) return;
 
-    // Save current page to URL hash (no page reload)
-    history.pushState(null, '', '#' + pageName);
+    // Clean URL — no # symbol, uses browser history
+    const cleanPath = window.location.pathname.replace(/\/[^/]*$/, '/') + (pageName === 'home' ? '' : pageName);
+    history.pushState({ page: pageName }, '', cleanPath);
+
+    // Update active nav styles
+    document.querySelectorAll('.nav-btn').forEach(btn => {
+        btn.classList.remove('text-yellow-400', 'bg-white/5');
+        btn.classList.add('text-gray-500');
+    });
+
+    const activeBtn = document.getElementById('nav-' + pageName);
+    if (activeBtn) {
+        activeBtn.classList.add('text-yellow-400', 'bg-white/5');
+        activeBtn.classList.remove('text-gray-500');
+    }
 
     try {
-        // Update active nav styles
-        document.querySelectorAll('.nav-btn').forEach(btn => {
-            btn.classList.remove('text-yellow-400', 'bg-white/5');
-            btn.classList.add('text-gray-500');
-        });
-
-        const activeBtn = document.getElementById('nav-' + pageName);
-        if (activeBtn) {
-            activeBtn.classList.add('text-yellow-400', 'bg-white/5');
-            activeBtn.classList.remove('text-gray-500');
-        }
-
         const response = await fetch(pageFiles[pageName]);
         if (!response.ok) throw new Error('Page not found');
 
@@ -37,6 +40,7 @@ async function showPage(pageName) {
         const content = doc.querySelector('section') ? doc.querySelector('section').outerHTML : html;
 
         container.innerHTML = content;
+        window.scrollTo(0, 0);
 
     } catch (error) {
         console.error('Error loading page:', error);
@@ -51,10 +55,11 @@ async function showPage(pageName) {
     }
 }
 
-// Read hash from URL, default to 'home'
-function getPageFromHash() {
-    const hash = location.hash.replace('#', '').toLowerCase().trim();
-    return pageFiles[hash] ? hash : 'home';
+// Detect current page from URL path
+function getPageFromURL() {
+    const path = window.location.pathname;
+    const segment = path.split('/').filter(Boolean).pop(); // last segment
+    return pageNames.includes(segment) ? segment : 'home';
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -66,11 +71,12 @@ document.addEventListener('DOMContentLoaded', () => {
         };
     });
 
-    // On load: restore the page from URL hash
-    showPage(getPageFromHash());
+    // Restore page from URL on load/refresh
+    showPage(getPageFromURL());
 });
 
-// Handle browser back/forward buttons
-window.addEventListener('popstate', () => {
-    showPage(getPageFromHash());
+// Handle browser back/forward
+window.addEventListener('popstate', (e) => {
+    const page = e.state?.page || getPageFromURL();
+    showPage(page);
 });

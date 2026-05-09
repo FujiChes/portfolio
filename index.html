@@ -3,87 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chester Besin | Tech Stack</title>
+    <title>Chester Besin | Animated Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;900&family=Space+Grotesk:wght@300;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-[#0a0a0a]">
+<body class="flex flex-col md:flex-row bg-[#0a0a0a]">
 
-    <section class="section-fade min-h-screen flex items-center px-6 md:px-20 bg-[#0b0b0b] py-20">
-        <div class="w-full">
-            <h2 class="text-yellow-400 mb-6 uppercase tracking-widest text-sm">Tech Stack</h2>
-            <h1 class="text-4xl md:text-6xl font-heading font-black mb-16 text-white">Languages & Tools</h1>
-            
-            <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
-
-                <!-- HTML -->
-                <div class="stack-item">
-                    <i class="fa-brands fa-html5 text-orange-500 text-3xl mb-3"></i>
-                    <p class="text-white font-bold">HTML</p>
-                </div>
-
-                <!-- CSS -->
-                <div class="stack-item">
-                    <i class="fa-brands fa-css3-alt text-blue-500 text-3xl mb-3"></i>
-                    <p class="text-white font-bold">CSS</p>
-                </div>
-
-                <!-- JavaScript -->
-                <div class="stack-item">
-                    <i class="fa-brands fa-js text-yellow-400 text-3xl mb-3"></i>
-                    <p class="text-white font-bold">JavaScript</p>
-                </div>
-
-                <!-- Java -->
-                <div class="stack-item">
-                    <i class="fa-brands fa-java text-red-500 text-3xl mb-3"></i>
-                    <p class="text-white font-bold">Java</p>
-                </div>
-
-                <!-- MySQL -->
-                <div class="stack-item">
-                    <i class="fa-solid fa-database text-blue-400 text-3xl mb-3"></i>
-                    <p class="text-white font-bold">MySQL</p>
-                </div>
-
-                <!-- Tailwind -->
-                <div class="stack-item">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" 
-                         class="w-9 h-9 mb-3 mx-auto" alt="Tailwind">
-                    <p class="text-white font-bold">Tailwind</p>
-                </div>
-
-                <!-- Figma -->
-                <div class="stack-item">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" 
-                         class="w-9 h-9 mb-3 mx-auto" alt="Figma">
-                    <p class="text-white font-bold">Figma</p>
-                </div>
-
-                <!-- VS Code -->
-                <div class="stack-item">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" 
-                         class="w-9 h-9 mb-3 mx-auto" alt="VS Code">
-                    <p class="text-white font-bold">VS Code</p>
-                </div>
-
-                <!-- Git -->
-                <div class="stack-item">
-                    <i class="fa-brands fa-git-alt text-orange-600 text-3xl mb-3"></i>
-                    <p class="text-white font-bold">Git</p>
-                </div>
-
-                <!-- GitHub -->
-                <div class="stack-item">
-                    <i class="fa-brands fa-github text-white text-3xl mb-3"></i>
-                    <p class="text-white font-bold">GitHub</p>
-                </div>
-
-            </div>
+    <nav class="sidebar fixed bottom-0 left-0 w-full h-16 md:h-screen md:w-20 md:top-0 border-t md:border-r md:border-t-0 border-white/10 bg-[#050505] flex md:flex-col items-center z-50">
+        <div class="hidden md:block px-6 my-10 text-yellow-400 font-black text-3xl">CB</div>
+        <div class="flex md:flex-col justify-around md:justify-start space-y-0 md:space-y-4 w-full px-2">
+            <button onclick="showPage('home')" id="nav-home" class="nav-btn">
+                <i class="fa-solid fa-house"></i><span class="sidebar-text">Home</span>
+            </button>
+            <button onclick="showPage('about')" id="nav-about" class="nav-btn">
+                <i class="fa-solid fa-user"></i><span class="sidebar-text">About</span>
+            </button>
+            <button onclick="showPage('stack')" id="nav-stack" class="nav-btn">
+                <i class="fa-solid fa-code"></i><span class="sidebar-text">Tech Stack</span>
+            </button>
+            <button onclick="showPage('certificates')" id="nav-certificates" class="nav-btn">
+                <i class="fa-solid fa-certificate"></i><span class="sidebar-text">Certificates</span>
+            </button>
         </div>
-    </section>
+    </nav>
 
+    <main id="content-area" class="w-full md:ml-20 min-h-screen"></main>
+
+    <script src="script.js"></script>
 </body>
 </html>

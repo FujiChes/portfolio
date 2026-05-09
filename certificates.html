@@ -22,20 +22,76 @@
             </h1>
 
             <p class="text-gray-500 text-lg mb-16 max-w-xl">
-                I'm currently focused on building real-world skills and hands-on experience. Certifications are on the horizon — stay tuned.
+                Certifications I've earned through continuous learning and dedication.
             </p>
 
-            <!-- Empty State -->
-            <div class="flex flex-col items-center justify-center py-24 border border-dashed border-white/10 rounded-2xl bg-white/[0.02]">
-                <div class="w-16 h-16 rounded-2xl bg-yellow-400/10 flex items-center justify-center mb-6">
-                    <i class="fa-solid fa-certificate text-yellow-400 text-2xl"></i>
-                </div>
-                <h3 class="text-white font-bold text-xl mb-2">No Certificates Yet</h3>
-                <p class="text-gray-600 text-sm text-center max-w-sm">
-                    Currently leveling up through projects and coursework. Certifications will be displayed here once earned.
-                </p>
-            </div>
+            <!-- Centered single card -->
+            <div class="flex justify-center">
 
+                <!-- Saylor Certificate -->
+                <div class="bg-white/[0.03] rounded-2xl border border-white/5 hover:border-yellow-400/30 transition-all duration-300 flex flex-col group overflow-hidden w-full max-w-sm">
+
+                    <!-- Certificate Image on Top -->
+                    <div class="w-full overflow-hidden">
+                        <img 
+                            src="Images/database-cert.jpg" 
+                            alt="CS403 Certificate"
+                            class="w-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        />
+                    </div>
+
+                    <!-- Card Content -->
+                    <div class="p-8 flex flex-col items-start">
+
+                        <!-- Icon -->
+                        <div class="w-12 h-12 rounded-xl bg-yellow-400/10 flex items-center justify-center mb-6">
+                            <i class="fa-solid fa-database text-yellow-400 text-lg"></i>
+                        </div>
+
+                        <!-- Badge -->
+                        <span class="text-[10px] border border-yellow-400/40 px-2 py-1 rounded text-yellow-400 font-bold uppercase tracking-widest mb-4 bg-yellow-400/10">
+                            Completed
+                        </span>
+
+                        <!-- Title -->
+                        <h3 class="text-lg font-bold mb-1 text-white">Introduction to Modern Database Systems</h3>
+                        <p class="text-gray-500 text-xs mb-4">CS403 · Saylor University</p>
+
+                        <!-- Details -->
+                        <div class="w-full border-t border-white/5 pt-4 mt-auto space-y-2 text-sm text-gray-500">
+                            <div class="flex justify-between">
+                                <span>Issue Date</span>
+                                <span class="text-white font-medium">May 9, 2026</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Grade</span>
+                                <span class="text-yellow-400 font-bold">74.00%</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Hours</span>
+                                <span class="text-white font-medium">29 hrs</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>CEU</span>
+                                <span class="text-white font-medium">2.9</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Certificate ID</span>
+                                <span class="text-white font-medium text-xs">9664978293CB</span>
+                            </div>
+                        </div>
+
+                        <!-- View Button -->
+                        <a href="https://learn.saylor.org/admin/tool/certificate/index.php" 
+                           target="_blank"
+                           class="mt-6 w-full text-center px-4 py-2 border border-yellow-400/30 text-yellow-400 text-xs uppercase tracking-widest hover:bg-yellow-400 hover:text-black transition-all duration-300 rounded-lg">
+                            View Certificate
+                        </a>
+
+                    </div>
+                </div>
+
+            </div>
         </div>
     </section>
 

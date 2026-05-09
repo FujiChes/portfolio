@@ -33,7 +33,7 @@ body { font-family: 'Inter', sans-serif; color: white; margin: 0; }
 /* Hero BG */
 .hero-bg { 
     background: linear-gradient(to right, #0a0a0a 30%, transparent 100%), 
-                url('sections/Images/profile1.jpg'); 
+                url('Images/profile1.jpg'); 
     background-size: cover; 
     background-position: center; 
 }

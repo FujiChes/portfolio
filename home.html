@@ -23,7 +23,13 @@
                 <h2 class="text-3xl text-gray-300 mb-4">Hi, I am</h2>
                 <h1 class="text-6xl md:text-[100px] font-heading font-black leading-none mb-8 text-white">CHESTER <br><span class="text-yellow-400">BESIN</span></h1>
                 <p class="text-gray-400 mb-10 tracking-widest text-sm uppercase">BSIT Student • UI/UX Enthusiast</p>
-                <a href="about.html" class="px-8 py-4 border border-yellow-400 text-yellow-400 hover:bg-yellow-400 hover:text-black transition uppercase text-xs tracking-widest">Read About Me</a>
+
+                <!-- ✅ Calls parent window's showPage so sidebar stays -->
+                <button 
+                    onclick="window.parent.showPage('about')" 
+                    class="px-8 py-4 border border-yellow-400 text-yellow-400 hover:bg-yellow-400 hover:text-black transition uppercase text-xs tracking-widest cursor-pointer">
+                    Read About Me
+                </button>
             </div>
 
         </div>

@@ -26,9 +26,20 @@ body { font-family: 'Inter', sans-serif; color: white; margin: 0; }
 @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
 /* Tech Stack Items */
-.stack-item { padding: 2rem; background: rgba(255,255,255,0.03); border-radius: 1rem; text-align: center; transition: 0.3s; }
+.stack-item {
+    padding: 2rem;
+    background: rgba(255,255,255,0.03);
+    border-radius: 1rem;
+    text-align: center;
+    transition: 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 .stack-item:hover { background: #facc15; color: black; transform: translateY(-5px); }
 .stack-item:hover img { filter: brightness(0); }
+.stack-item:hover i { color: black !important; }
 
 /* Hero BG */
 .hero-bg { 

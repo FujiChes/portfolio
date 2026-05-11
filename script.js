@@ -25,16 +25,19 @@ function showPage(pageName) {
         activeBtn.classList.remove('text-gray-500');
     }
 
-    // Use iframe instead of fetch — works without live server
+    // Use iframe — works without live server on file://
     container.innerHTML = `
         <iframe 
             src="${pageFiles[pageName]}"
-            style="width:100%; height:100vh; border:none; display:block;"
-            scrolling="yes">
-        </iframe>`;
+            id="page-frame"
+            style="width:100%; height:100vh; border:none; display:block; overflow-y:auto;"
+        ></iframe>`;
 
     window.scrollTo(0, 0);
 }
+
+// Make showPage globally accessible from inside iframes
+window.showPage = showPage;
 
 document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.nav-btn').forEach(btn => {

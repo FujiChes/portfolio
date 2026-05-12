@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Home | Chester Besin</title>
+    <title>Chester Besin | Home</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;900&family=Space+Grotesk:wght@300;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body class="bg-[#0a0a0a]">
-    <section class="section-fade h-screen flex items-center px-6 md:px-20 hero-bg">
+    <section class="section-fade h-screen flex items-center px-6 md:px-20 hero-bg overflow-hidden w-full">
         <div class="flex flex-col md:flex-row items-center gap-10 w-full">
             
             <img 
-                src="Images/profile4.jpg" 
+                src="Images/profile1.jpg" 
                 alt="Chester Besin"
                 class="w-40 h-40 md:w-56 md:h-56 object-cover rounded-full border-4 border-yellow-400"
             />
@@ -24,9 +24,8 @@
                 <h1 class="text-6xl md:text-[100px] font-heading font-black leading-none mb-8 text-white">CHESTER <br><span class="text-yellow-400">BESIN</span></h1>
                 <p class="text-gray-400 mb-10 tracking-widest text-sm uppercase">BSIT Student • UI/UX Enthusiast</p>
 
-                <!-- ✅ Calls parent window's showPage so sidebar stays -->
                 <button 
-                    onclick="window.parent.showPage('about')" 
+                    onclick="try { window.parent.showPage('about') } catch(e) { window.location.href='about.html' }"
                     class="px-8 py-4 border border-yellow-400 text-yellow-400 hover:bg-yellow-400 hover:text-black transition uppercase text-xs tracking-widest cursor-pointer">
                     Read About Me
                 </button>

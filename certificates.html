@@ -8,27 +8,75 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;900&family=Space+Grotesk:wght@300;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../style.css">
+    <style>
+        .cert-header { opacity: 0; }
+        .cert-card { opacity: 0; cursor: pointer; }
+
+        /* Modal */
+        #cert-modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 999;
+            background: rgba(0,0,0,0.88);
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+        }
+        #cert-modal.open { display: flex; }
+        #cert-modal .modal-box {
+            background: #111;
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+            max-width: 620px;
+            width: 100%;
+            position: relative;
+        }
+        #cert-modal img {
+            width: 100%;
+            border-radius: 0.75rem;
+            margin-bottom: 1.25rem;
+        }
+        #cert-modal .close-btn {
+            position: absolute;
+            top: 1rem; right: 1rem;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: white;
+            width: 2rem; height: 2rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 0.75rem;
+            transition: background 0.2s;
+        }
+        #cert-modal .close-btn:hover { background: rgba(250,204,21,0.15); color: #facc15; }
+    </style>
 </head>
 <body class="bg-[#0a0a0a]">
 
     <section id="certificates" class="section-fade min-h-screen flex items-center px-6 md:px-20 bg-[#0a0a0a] py-20">
         <div class="w-full">
-            <h2 class="text-yellow-400 mb-6 uppercase tracking-[0.2em] text-sm font-bold">
+
+            <h2 class="cert-header text-yellow-400 mb-6 uppercase tracking-[0.2em] text-sm font-bold">
                 Achievements
             </h2>
-
-            <h1 class="text-4xl md:text-6xl font-heading font-black mb-6 text-white">
+            <h1 class="cert-header text-4xl md:text-6xl font-heading font-black mb-6 text-white">
                 My Certifications
             </h1>
-
-            <p class="text-gray-500 text-lg mb-16 max-w-xl">
+            <p class="cert-header text-gray-500 text-lg mb-16 max-w-xl">
                 Certifications I've earned through continuous learning and dedication.
             </p>
 
             <div class="flex flex-wrap justify-center gap-8">
 
                 <!-- Certificate 1: Database Systems -->
-                <div class="bg-white/[0.03] rounded-2xl border border-white/5 hover:border-yellow-400/30 transition-all duration-300 flex flex-col group overflow-hidden w-full max-w-sm">
+                <div class="cert-card bg-white/[0.03] rounded-2xl border border-white/5 hover:border-yellow-400/30 transition-all duration-300 flex flex-col group overflow-hidden w-full max-w-sm"
+                     onclick="openModal('Images/database-cert.jpg', 'Introduction to Modern Database Systems', 'https://learn.saylor.org/admin/tool/certificate/index.php')">
 
                     <div class="w-full overflow-hidden">
                         <img 
@@ -39,7 +87,6 @@
                     </div>
 
                     <div class="p-8 flex flex-col items-start">
-
                         <div class="w-12 h-12 rounded-xl bg-yellow-400/10 flex items-center justify-center mb-6">
                             <i class="fa-solid fa-database text-yellow-400 text-lg"></i>
                         </div>
@@ -74,19 +121,19 @@
                             </div>
                         </div>
 
-                        <div class="mt-6 w-full">
+                        <div class="mt-6 w-full" onclick="event.stopPropagation()">
                             <a href="https://learn.saylor.org/admin/tool/certificate/index.php" 
                                target="_blank"
                                class="w-full text-center px-4 py-2 bg-yellow-400 text-black text-xs font-bold uppercase tracking-widest hover:bg-yellow-300 transition-all duration-300 rounded-lg block">
                                 View Certificate
                             </a>
                         </div>
-
                     </div>
                 </div>
 
                 <!-- Certificate 2: Software Engineering -->
-                <div class="bg-white/[0.03] rounded-2xl border border-white/5 hover:border-yellow-400/30 transition-all duration-300 flex flex-col group overflow-hidden w-full max-w-sm">
+                <div class="cert-card bg-white/[0.03] rounded-2xl border border-white/5 hover:border-yellow-400/30 transition-all duration-300 flex flex-col group overflow-hidden w-full max-w-sm"
+                     onclick="openModal('Images/Software-cert.jpg', 'Software Engineering', 'https://learn.saylor.org/admin/tool/certificate/index.php')">
 
                     <div class="w-full overflow-hidden">
                         <img 
@@ -97,7 +144,6 @@
                     </div>
 
                     <div class="p-8 flex flex-col items-start">
-
                         <div class="w-12 h-12 rounded-xl bg-yellow-400/10 flex items-center justify-center mb-6">
                             <i class="fa-solid fa-code-branch text-yellow-400 text-lg"></i>
                         </div>
@@ -132,20 +178,78 @@
                             </div>
                         </div>
 
-                        <div class="mt-6 w-full">
+                        <div class="mt-6 w-full" onclick="event.stopPropagation()">
                             <a href="https://learn.saylor.org/admin/tool/certificate/index.php" 
                                target="_blank"
                                class="w-full text-center px-4 py-2 bg-yellow-400 text-black text-xs font-bold uppercase tracking-widest hover:bg-yellow-300 transition-all duration-300 rounded-lg block">
                                 View Certificate
                             </a>
                         </div>
-
                     </div>
                 </div>
 
             </div>
         </div>
     </section>
+
+    <!-- Enlarge Modal -->
+    <div id="cert-modal">
+        <div class="modal-box">
+            <button class="close-btn" onclick="closeModal()"><i class="fas fa-times"></i></button>
+            <img id="modal-img" src="" alt="Certificate" />
+            <div class="flex items-center justify-between flex-wrap gap-3">
+                <p id="modal-title" class="text-white font-bold text-base"></p>
+                <a id="modal-link" href="#" target="_blank"
+                   class="text-xs text-yellow-400 border border-yellow-400/30 px-3 py-1.5 rounded-lg hover:bg-yellow-400/10 transition">
+                    View Verification <i class="fas fa-arrow-up-right-from-square ml-1 text-[10px]"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script>
+        anime({
+            targets: '.cert-header',
+            opacity: [0, 1],
+            translateY: [30, 0],
+            delay: anime.stagger(100),
+            duration: 700,
+            easing: 'easeOutExpo'
+        });
+
+        anime({
+            targets: '.cert-card',
+            opacity: [0, 1],
+            translateY: [40, 0],
+            delay: anime.stagger(150, { start: 300 }),
+            duration: 700,
+            easing: 'easeOutExpo'
+        });
+
+        function openModal(imgSrc, title, link) {
+            document.getElementById('modal-img').src = imgSrc;
+            document.getElementById('modal-title').textContent = title;
+            document.getElementById('modal-link').href = link;
+            const modal = document.getElementById('cert-modal');
+            modal.classList.add('open');
+            anime({
+                targets: '.modal-box',
+                opacity: [0, 1],
+                scale: [0.92, 1],
+                duration: 350,
+                easing: 'easeOutExpo'
+            });
+        }
+
+        function closeModal() {
+            document.getElementById('cert-modal').classList.remove('open');
+        }
+
+        document.getElementById('cert-modal').addEventListener('click', function(e) {
+            if (e.target === this) closeModal();
+        });
+    </script>
 
 </body>
 </html>

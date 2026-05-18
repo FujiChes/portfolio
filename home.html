@@ -4,34 +4,361 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chester Besin | Home</title>
+
+    <!-- Tailwind -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;900&family=Space+Grotesk:wght@300;700&display=swap" rel="stylesheet">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- AnimeJS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+
     <link rel="stylesheet" href="style.css">
+
+    <style>
+
+        *{
+            font-family: 'Inter', sans-serif;
+        }
+
+        body{
+            background: #0a0a0a;
+            overflow-x: hidden;
+        }
+
+        .font-heading{
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        /* HERO */
+        .hero-bg{
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* DARK OVERLAY */
+        .hero-overlay{
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(
+                    to right,
+                    rgba(10,10,10,0.95),
+                    rgba(10,10,10,0.75),
+                    rgba(10,10,10,0.92)
+                );
+            z-index: 1;
+        }
+
+        /* YELLOW GLOW */
+        .yellow-glow{
+            position: absolute;
+            width: 450px;
+            height: 450px;
+            background: rgba(250,204,21,0.10);
+            border-radius: 999px;
+            filter: blur(120px);
+            top: -120px;
+            right: -100px;
+            z-index: 1;
+        }
+
+        /* GRID */
+        .grid-bg{
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+            z-index: 1;
+            mask-image: radial-gradient(circle at center, black 35%, transparent 100%);
+        }
+
+        /* PROFILE */
+        .profile-wrapper{
+            position: relative;
+            opacity: 0;
+        }
+
+        .profile-ring{
+            position: absolute;
+            inset: -10px;
+            border: 2px dashed rgba(250,204,21,0.25);
+            border-radius: 999px;
+            animation: spin 18s linear infinite;
+        }
+
+        @keyframes spin{
+            from{
+                transform: rotate(0deg);
+            }
+            to{
+                transform: rotate(360deg);
+            }
+        }
+
+        .profile-image{
+            position: relative;
+            z-index: 2;
+            object-fit: cover;
+            box-shadow:
+                0 0 50px rgba(250,204,21,0.12),
+                0 0 120px rgba(250,204,21,0.08);
+        }
+
+        /* HERO TEXT */
+        .hero-text > *{
+            opacity: 0;
+        }
+
+        /* BUTTON SHINE */
+        .hero-btn{
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-btn::before{
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -120%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255,255,255,0.2);
+            transform: skewX(-25deg);
+            transition: .7s;
+        }
+
+        .hero-btn:hover::before{
+            left: 120%;
+        }
+
+        /* FLOATING ICONS */
+        .floating-icon{
+            position: absolute;
+            color: rgba(250,204,21,0.10);
+            font-size: 2rem;
+            z-index: 1;
+            animation: float 5s ease-in-out infinite;
+        }
+
+        .floating-icon:nth-child(1){
+            top: 10%;
+            left: 8%;
+        }
+
+        .floating-icon:nth-child(2){
+            top: 75%;
+            left: 12%;
+            animation-delay: 1s;
+        }
+
+        .floating-icon:nth-child(3){
+            top: 18%;
+            right: 10%;
+            animation-delay: 2s;
+        }
+
+        .floating-icon:nth-child(4){
+            bottom: 10%;
+            right: 18%;
+            animation-delay: 3s;
+        }
+
+        @keyframes float{
+            0%,100%{
+                transform: translateY(0px);
+            }
+            50%{
+                transform: translateY(-20px);
+            }
+        }
+
+        /* SOCIAL BUTTONS */
+        .social-btn{
+            transition: all .3s ease;
+        }
+
+        .social-btn:hover{
+            transform: translateY(-6px);
+            box-shadow: 0 10px 30px rgba(250,204,21,0.12);
+        }
+
+        @media(max-width:768px){
+
+            .hero-container{
+                text-align: center;
+            }
+
+            .hero-buttons{
+                justify-content: center;
+            }
+
+            .socials{
+                justify-content: center;
+            }
+
+        }
+
+    </style>
 </head>
-<body class="bg-[#0a0a0a]">
-    <section class="section-fade h-screen flex items-center px-6 md:px-20 hero-bg overflow-hidden w-full">
-        <div class="flex flex-col md:flex-row items-center gap-10 w-full">
-            
-            <img 
-                src="Images/profile4.jpg" 
+
+<body>
+
+<section class="section-fade min-h-screen flex items-center px-6 md:px-20 hero-bg w-full">
+
+    <!-- OVERLAYS -->
+    <div class="hero-overlay"></div>
+    <div class="yellow-glow"></div>
+    <div class="grid-bg"></div>
+
+    <!-- FLOATING ICONS -->
+    <i class="floating-icon fa-solid fa-code"></i>
+    <i class="floating-icon fa-solid fa-database"></i>
+    <i class="floating-icon fa-solid fa-laptop-code"></i>
+    <i class="floating-icon fa-solid fa-terminal"></i>
+
+    <!-- MAIN -->
+    <div class="hero-container relative z-10 flex flex-col md:flex-row items-center gap-16 w-full">
+
+        <!-- PROFILE -->
+        <div class="profile-wrapper">
+
+            <div class="profile-ring"></div>
+
+            <img
+                src="Images/profile4.jpg"
                 alt="Chester Besin"
-                class="w-40 h-40 md:w-56 md:h-56 object-cover rounded-full border-4 border-yellow-400"
+                class="profile-image w-52 h-52 md:w-72 md:h-72 rounded-full border-4 border-yellow-400"
             />
 
-            <div>
-                <h2 class="text-3xl text-gray-300 mb-4">Hi, I am</h2>
-                <h1 class="text-6xl md:text-[100px] font-heading font-black leading-none mb-8 text-white">CHESTER <br><span class="text-yellow-400">BESIN</span></h1>
-                <p class="text-gray-400 mb-10 tracking-widest text-sm uppercase">BSIT Student • UI/UX Enthusiast</p>
+        </div>
 
-                <button 
+        <!-- TEXT -->
+        <div class="hero-text max-w-3xl">
+
+            <p class="text-yellow-400 uppercase tracking-[0.35em] text-xs mb-5 font-bold">
+                WELCOME TO MY PORTFOLIO
+            </p>
+
+            <h2 class="text-3xl md:text-4xl text-gray-300 mb-5 font-light">
+                Hi, I am
+            </h2>
+
+            <h1 class="font-heading text-6xl md:text-[110px] font-black leading-none text-white mb-8">
+                CHESTER
+                <br>
+                <span class="text-yellow-400">
+                    BESIN
+                </span>
+            </h1>
+
+            <p class="text-gray-300 text-lg md:text-xl leading-relaxed max-w-2xl mb-10">
+                passionate about frontend development,
+                UI/UX design, modern web experiences, and creating
+                visually engaging digital projects.
+            </p>
+
+            <!-- STATS -->
+            <div class="flex flex-wrap gap-5 mb-12">
+
+                <div class="bg-white/[0.04] border border-white/10 rounded-2xl px-6 py-4 backdrop-blur-md">
+                    <h3 class="text-yellow-400 text-2xl font-black">2+</h3>
+                    <p class="text-gray-400 text-sm">Certificates</p>
+                </div>
+
+                <div class="bg-white/[0.04] border border-white/10 rounded-2xl px-6 py-4 backdrop-blur-md">
+                    <h3 class="text-yellow-400 text-2xl font-black">UI/UX</h3>
+                    <p class="text-gray-400 text-sm">Design Focus</p>
+                </div>
+
+                
+
+            </div>
+
+            <!-- BUTTONS -->
+            <div class="hero-buttons flex flex-wrap gap-5">
+
+                <button
                     onclick="try { window.parent.showPage('about') } catch(e) { window.location.href='about.html' }"
-                    class="px-8 py-4 border border-yellow-400 text-yellow-400 hover:bg-yellow-400 hover:text-black transition uppercase text-xs tracking-widest cursor-pointer">
+                    class="hero-btn px-8 py-4 bg-yellow-400 text-black hover:bg-yellow-300 transition duration-300 uppercase tracking-[0.2em] text-xs rounded-xl font-bold"
+                >
                     Read About Me
                 </button>
+
+                <button
+                    onclick="try { window.parent.showPage('stack') } catch(e) { window.location.href='stack.html' }"
+                    class="px-8 py-4 border border-white/10 text-white hover:border-yellow-400 hover:text-yellow-400 transition duration-300 uppercase tracking-[0.2em] text-xs rounded-xl"
+                >
+                    View Tech Stack
+                </button>
+
+            </div>
+
+            <!-- SOCIALS -->
+            <div class="socials flex gap-5 mt-12">
+
+                <!-- FACEBOOK -->
+                <a
+                    href="https://www.facebook.com/chester.besin/"
+                    target="_blank"
+                    class="social-btn w-14 h-14 rounded-2xl border border-white/10 bg-white/[0.03] flex items-center justify-center text-gray-300 hover:text-yellow-400 hover:border-yellow-400"
+                >
+                    <i class="fab fa-facebook-f text-lg"></i>
+                </a>
+
+                <!-- GITHUB -->
+                <a
+                    href="https://github.com/FujiChes/portfolio"
+                    target="_blank"
+                    class="social-btn w-14 h-14 rounded-2xl border border-white/10 bg-white/[0.03] flex items-center justify-center text-gray-300 hover:text-yellow-400 hover:border-yellow-400"
+                >
+                    <i class="fab fa-github text-lg"></i>
+                </a>
+
             </div>
 
         </div>
-    </section>
+
+    </div>
+
+</section>
+
+<!-- ANIMATIONS -->
+<script>
+
+    anime({
+        targets: '.profile-wrapper',
+        opacity: [0,1],
+        scale: [0.8,1],
+        duration: 1400,
+        easing: 'easeOutExpo'
+    });
+
+    anime({
+        targets: '.hero-text > *',
+        opacity: [0,1],
+        translateY: [40,0],
+        delay: anime.stagger(180,{start:300}),
+        duration: 1200,
+        easing: 'easeOutExpo'
+    });
+
+    anime({
+        targets: '.floating-icon',
+        opacity: [0,1],
+        scale: [0.5,1],
+        delay: anime.stagger(200),
+        duration: 1500,
+        easing: 'easeOutExpo'
+    });
+
+</script>
+
 </body>
 </html>

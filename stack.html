@@ -6,161 +6,89 @@
     <title>Tech Stack | Chester Besin</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
-
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
-
     <link rel="stylesheet" href="style.css">
 
     <style>
-        *{
-            font-family: 'Inter', sans-serif;
-        }
+        *{ font-family: 'Inter', sans-serif; }
+        body{ background: #0a0a0a; overflow-x: hidden; }
+        .font-heading{ font-family: 'Space Grotesk', sans-serif; }
+        .stack-header{ opacity: 0; }
+        .stack-item{ opacity: 0; }
 
-        body{
-            background: #0a0a0a;
-            overflow-x: hidden;
-        }
+        .stack-section{ position: relative; overflow: hidden; }
 
-        .font-heading{
-            font-family: 'Space Grotesk', sans-serif;
-        }
-
-        .stack-header{
-            opacity: 0;
-        }
-
-        .stack-item{
-            opacity: 0;
-        }
-
-        /* SECTION BACKGROUND */
-        .stack-section{
-            position: relative;
-            overflow: hidden;
-        }
-
-        /* GRID */
         .grid-bg{
-            position: absolute;
-            inset: 0;
-            background-image:
-                linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+            position: absolute; inset: 0;
+            background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
             background-size: 60px 60px;
             mask-image: radial-gradient(circle at center, black 30%, transparent 100%);
             z-index: 1;
         }
 
-        /* YELLOW GLOW */
         .yellow-glow{
-            position: absolute;
-            width: 450px;
-            height: 450px;
-            background: rgba(250,204,21,0.10);
-            border-radius: 999px;
-            filter: blur(120px);
-            top: -120px;
-            right: -100px;
-            z-index: 1;
+            position: absolute; width: 450px; height: 450px;
+            background: rgba(250,204,21,0.10); border-radius: 999px;
+            filter: blur(120px); top: -120px; right: -100px; z-index: 1;
         }
 
-        /* STACK CARD */
         .stack-card{
             position: relative;
             background: rgba(255,255,255,0.03);
             border: 1px solid rgba(255,255,255,0.08);
-            border-radius: 1.5rem;
-            padding: 2rem;
+            border-radius: 1.5rem; padding: 2rem;
             transition: all .35s ease;
-            overflow: hidden;
-            backdrop-filter: blur(12px);
+            overflow: hidden; backdrop-filter: blur(12px);
         }
-
         .stack-card::before{
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(
-                135deg,
-                rgba(250,204,21,0.08),
-                transparent 50%
-            );
-            opacity: 0;
-            transition: .4s;
+            content: ''; position: absolute; inset: 0;
+            background: linear-gradient(135deg, rgba(250,204,21,0.08), transparent 50%);
+            opacity: 0; transition: .4s;
         }
-
-        .stack-card:hover::before{
-            opacity: 1;
-        }
-
+        .stack-card:hover::before{ opacity: 1; }
         .stack-card:hover{
             transform: translateY(-10px);
             border-color: rgba(250,204,21,0.35);
-            box-shadow:
-                0 10px 30px rgba(0,0,0,0.45),
-                0 0 40px rgba(250,204,21,0.08);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.45), 0 0 40px rgba(250,204,21,0.08);
         }
 
-        /* ICON WRAPPER */
+        /* CONSISTENT ICON WRAPPER - fixed 72x72, centered */
         .icon-wrap{
-            width: 72px;
-            height: 72px;
+            width: 72px; height: 72px;
             border-radius: 1.25rem;
             background: rgba(255,255,255,0.03);
             border: 1px solid rgba(255,255,255,0.06);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1.25rem;
-            transition: .35s;
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 1.25rem; transition: .35s; flex-shrink: 0;
         }
-
         .stack-card:hover .icon-wrap{
             transform: scale(1.08);
             border-color: rgba(250,204,21,0.25);
             background: rgba(250,204,21,0.06);
         }
 
-        /* TECH LABEL */
-        .tech-name{
-            font-size: 1.05rem;
-            font-weight: 700;
-            color: white;
-            margin-bottom: .45rem;
-        }
+        /* ALL icons and images same size inside icon-wrap */
+        .icon-wrap i { font-size: 2rem; line-height: 1; }
+        .icon-wrap img { width: 36px; height: 36px; object-fit: contain; }
 
-        .tech-desc{
-            font-size: .82rem;
-            line-height: 1.6;
-            color: #9ca3af;
-        }
+        .tech-name{ font-size: 1.05rem; font-weight: 700; color: white; margin-bottom: .45rem; }
+        .tech-desc{ font-size: .82rem; line-height: 1.6; color: #9ca3af; }
 
-        /* FLOATING ICONS */
         .floating-icon{
-            position: absolute;
-            color: rgba(250,204,21,0.08);
-            font-size: 2rem;
-            z-index: 1;
+            position: absolute; color: rgba(250,204,21,0.08);
+            font-size: 2rem; z-index: 1;
             animation: float 6s ease-in-out infinite;
         }
-
         .floating-icon:nth-child(1){ top: 10%; left: 8%; }
         .floating-icon:nth-child(2){ top: 70%; left: 12%; animation-delay: 1s; }
         .floating-icon:nth-child(3){ top: 20%; right: 10%; animation-delay: 2s; }
         .floating-icon:nth-child(4){ bottom: 10%; right: 15%; animation-delay: 3s; }
 
-        @keyframes float{
-            0%,100%{ transform: translateY(0px); }
-            50%{ transform: translateY(-20px); }
-        }
+        @keyframes float{ 0%,100%{ transform: translateY(0px); } 50%{ transform: translateY(-20px); } }
 
-        @media(max-width:768px){
-            .stack-card{ padding: 1.5rem; }
-        }
+        @media(max-width:768px){ .stack-card{ padding: 1.5rem; } }
     </style>
 </head>
 <body class="flex flex-col md:flex-row bg-[#0a0a0a]">
@@ -168,22 +96,18 @@
     <nav class="sidebar fixed bottom-0 left-0 w-full h-16 md:h-screen md:w-20 md:top-0 border-t md:border-r md:border-t-0 border-white/10 bg-[#050505] flex md:flex-col items-center z-50 transition-all duration-300 hover:md:w-64">
         <div class="hidden md:block px-6 my-10 text-yellow-400 font-black text-3xl">CB</div>
         <div class="flex md:flex-col justify-around md:justify-start space-y-0 md:space-y-4 w-full px-2">
-            
-            <a href="index.html" class="nav-btn text-gray-500 hover:text-yellow-400 flex items-center gap-4 p-3 rounded-xl w-full">
+            <a href="home.html" class="nav-btn text-gray-500 hover:text-yellow-400 flex items-center gap-4 p-3 rounded-xl w-full">
                 <i class="fa-solid fa-house min-w-[20px] text-center"></i>
                 <span class="sidebar-text opacity-0 transition-opacity duration-300 font-medium">Home</span>
             </a>
-            
             <a href="about.html" class="nav-btn text-gray-500 hover:text-yellow-400 flex items-center gap-4 p-3 rounded-xl w-full">
                 <i class="fa-solid fa-user min-w-[20px] text-center"></i>
                 <span class="sidebar-text opacity-0 transition-opacity duration-300 font-medium">About</span>
             </a>
-            
             <a href="stack.html" class="nav-btn text-yellow-400 bg-white/5 flex items-center gap-4 p-3 rounded-xl w-full">
                 <i class="fa-solid fa-code min-w-[20px] text-center"></i>
                 <span class="sidebar-text opacity-0 transition-opacity duration-300 font-medium">Tech Stack</span>
             </a>
-            
             <a href="certificates.html" class="nav-btn text-gray-500 hover:text-yellow-400 flex items-center gap-4 p-3 rounded-xl w-full">
                 <i class="fa-solid fa-certificate min-w-[20px] text-center"></i>
                 <span class="sidebar-text opacity-0 transition-opacity duration-300 font-medium">Certificates</span>
@@ -191,7 +115,7 @@
         </div>
     </nav>
 
-    <main id="content-area" class="w-full md:ml-20 min-h-screen">
+    <main class="w-full md:ml-20 min-h-screen">
         <section class="stack-section min-h-screen flex items-center px-6 md:px-20 py-20 pb-24 md:pb-20">
 
             <div class="grid-bg"></div>
@@ -203,14 +127,9 @@
             <i class="floating-icon fa-solid fa-database"></i>
 
             <div class="relative z-10 w-full">
-
                 <div class="mb-16">
-                    <h2 class="stack-header text-yellow-400 mb-5 uppercase tracking-[0.3em] text-sm font-bold">
-                        Tech Stack
-                    </h2>
-                    <h1 class="stack-header text-5xl md:text-7xl font-heading font-black text-white leading-tight mb-6">
-                        Languages & Tools
-                    </h1>
+                    <h2 class="stack-header text-yellow-400 mb-5 uppercase tracking-[0.3em] text-sm font-bold">Tech Stack</h2>
+                    <h1 class="stack-header text-5xl md:text-7xl font-heading font-black text-white leading-tight mb-6">Languages & Tools</h1>
                     <p class="stack-header text-gray-400 text-lg leading-relaxed max-w-2xl">
                         Technologies and tools I use for building modern, responsive, and user-friendly digital experiences.
                     </p>
@@ -219,119 +138,71 @@
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
 
                     <div class="stack-item stack-card">
-                        <div class="icon-wrap">
-                            <i class="fa-brands fa-html5 text-orange-500 text-4xl"></i>
-                        </div>
+                        <div class="icon-wrap"><i class="fa-brands fa-html5 text-orange-500"></i></div>
                         <h3 class="tech-name">HTML5</h3>
-                        <p class="tech-desc">
-                            Semantic and structured markup for modern web interfaces.
-                        </p>
+                        <p class="tech-desc">Semantic and structured markup for modern web interfaces.</p>
                     </div>
 
                     <div class="stack-item stack-card">
-                        <div class="icon-wrap">
-                            <i class="fa-brands fa-css3-alt text-blue-500 text-4xl"></i>
-                        </div>
+                        <div class="icon-wrap"><i class="fa-brands fa-css3-alt text-blue-500"></i></div>
                         <h3 class="tech-name">CSS</h3>
-                        <p class="tech-desc">
-                            Styling responsive layouts with modern animations and effects.
-                        </p>
+                        <p class="tech-desc">Styling responsive layouts with modern animations and effects.</p>
                     </div>
 
                     <div class="stack-item stack-card">
-                        <div class="icon-wrap">
-                            <i class="fa-brands fa-js text-yellow-400 text-4xl"></i>
-                        </div>
+                        <div class="icon-wrap"><i class="fa-brands fa-js text-yellow-400"></i></div>
                         <h3 class="tech-name">JavaScript</h3>
-                        <p class="tech-desc">
-                            Creating interactive and dynamic frontend experiences.
-                        </p>
+                        <p class="tech-desc">Creating interactive and dynamic frontend experiences.</p>
                     </div>
 
                     <div class="stack-item stack-card">
-                        <div class="icon-wrap">
-                            <i class="fa-brands fa-java text-red-500 text-4xl"></i>
-                        </div>
+                        <div class="icon-wrap"><i class="fa-brands fa-java text-red-500"></i></div>
                         <h3 class="tech-name">Java</h3>
-                        <p class="tech-desc">
-                            Building object-oriented applications and software systems.
-                        </p>
+                        <p class="tech-desc">Building object-oriented applications and software systems.</p>
                     </div>
 
                     <div class="stack-item stack-card">
                         <div class="icon-wrap">
-                            <img
-                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg"
-                                class="w-10 h-10"
-                                alt="MySQL"
-                            />
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL"/>
                         </div>
                         <h3 class="tech-name">MySQL</h3>
-                        <p class="tech-desc">
-                            Managing relational databases and backend data structures.
-                        </p>
+                        <p class="tech-desc">Managing relational databases and backend data structures.</p>
                     </div>
 
                     <div class="stack-item stack-card">
                         <div class="icon-wrap">
-                            <img
-                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg"
-                                class="w-10 h-10"
-                                alt="Tailwind"
-                            />
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" alt="Tailwind"/>
                         </div>
                         <h3 class="tech-name">Tailwind</h3>
-                        <p class="tech-desc">
-                            Rapid UI development using utility-first CSS styling.
-                        </p>
+                        <p class="tech-desc">Rapid UI development using utility-first CSS styling.</p>
                     </div>
 
                     <div class="stack-item stack-card">
                         <div class="icon-wrap">
-                            <img
-                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg"
-                                class="w-10 h-10"
-                                alt="Figma"
-                            />
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma"/>
                         </div>
                         <h3 class="tech-name">Figma</h3>
-                        <p class="tech-desc">
-                            Designing modern interfaces and UI/UX prototypes.
-                        </p>
+                        <p class="tech-desc">Designing modern interfaces and UI/UX prototypes.</p>
                     </div>
 
                     <div class="stack-item stack-card">
                         <div class="icon-wrap">
-                            <img
-                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg"
-                                class="w-10 h-10"
-                                alt="VS Code"
-                            />
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="VS Code"/>
                         </div>
                         <h3 class="tech-name">VS Code</h3>
-                        <p class="tech-desc">
-                            My primary development environment for coding projects.
-                        </p>
+                        <p class="tech-desc">My primary development environment for coding projects.</p>
                     </div>
 
                     <div class="stack-item stack-card">
-                        <div class="icon-wrap">
-                            <i class="fa-brands fa-git-alt text-orange-600 text-4xl"></i>
-                        </div>
+                        <div class="icon-wrap"><i class="fa-brands fa-git-alt text-orange-600"></i></div>
                         <h3 class="tech-name">Git</h3>
-                        <p class="tech-desc">
-                            Version control and collaborative development workflows.
-                        </p>
+                        <p class="tech-desc">Version control and collaborative development workflows.</p>
                     </div>
 
                     <div class="stack-item stack-card">
-                        <div class="icon-wrap">
-                            <i class="fa-brands fa-github text-white text-4xl"></i>
-                        </div>
+                        <div class="icon-wrap"><i class="fa-brands fa-github text-white"></i></div>
                         <h3 class="tech-name">GitHub</h3>
-                        <p class="tech-desc">
-                            Hosting repositories and showcasing development projects.
-                        </p>
+                        <p class="tech-desc">Hosting repositories and showcasing development projects.</p>
                     </div>
 
                 </div>
@@ -340,33 +211,9 @@
     </main>
 
     <script>
-        anime({
-            targets: '.stack-header',
-            opacity: [0,1],
-            translateY: [40,0],
-            delay: anime.stagger(120),
-            duration: 1000,
-            easing: 'easeOutExpo'
-        });
-
-        anime({
-            targets: '.stack-item',
-            opacity: [0,1],
-            translateY: [40,0],
-            scale: [0.9,1],
-            delay: anime.stagger(100,{start:400}),
-            duration: 900,
-            easing: 'easeOutExpo'
-        });
-
-        anime({
-            targets: '.floating-icon',
-            opacity: [0,1],
-            scale: [0.5,1],
-            delay: anime.stagger(200),
-            duration: 1500,
-            easing: 'easeOutExpo'
-        });
+        anime({ targets: '.stack-header', opacity: [0,1], translateY: [40,0], delay: anime.stagger(120), duration: 1000, easing: 'easeOutExpo' });
+        anime({ targets: '.stack-item', opacity: [0,1], translateY: [40,0], scale: [0.9,1], delay: anime.stagger(100,{start:400}), duration: 900, easing: 'easeOutExpo' });
+        anime({ targets: '.floating-icon', opacity: [0,1], scale: [0.5,1], delay: anime.stagger(200), duration: 1500, easing: 'easeOutExpo' });
     </script>
 </body>
 </html>

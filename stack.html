@@ -54,7 +54,6 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.45), 0 0 40px rgba(250,204,21,0.08);
         }
 
-        /* CONSISTENT ICON WRAPPER - fixed 72x72, centered */
         .icon-wrap{
             width: 72px; height: 72px;
             border-radius: 1.25rem;
@@ -69,24 +68,11 @@
             background: rgba(250,204,21,0.06);
         }
 
-        /* ALL icons and images same size inside icon-wrap */
         .icon-wrap i { font-size: 2rem; line-height: 1; }
         .icon-wrap img { width: 36px; height: 36px; object-fit: contain; }
 
         .tech-name{ font-size: 1.05rem; font-weight: 700; color: white; margin-bottom: .45rem; }
         .tech-desc{ font-size: .82rem; line-height: 1.6; color: #9ca3af; }
-
-        .floating-icon{
-            position: absolute; color: rgba(250,204,21,0.08);
-            font-size: 2rem; z-index: 1;
-            animation: float 6s ease-in-out infinite;
-        }
-        .floating-icon:nth-child(1){ top: 10%; left: 8%; }
-        .floating-icon:nth-child(2){ top: 70%; left: 12%; animation-delay: 1s; }
-        .floating-icon:nth-child(3){ top: 20%; right: 10%; animation-delay: 2s; }
-        .floating-icon:nth-child(4){ bottom: 10%; right: 15%; animation-delay: 3s; }
-
-        @keyframes float{ 0%,100%{ transform: translateY(0px); } 50%{ transform: translateY(-20px); } }
 
         @media(max-width:768px){ .stack-card{ padding: 1.5rem; } }
     </style>
@@ -121,11 +107,6 @@
             <div class="grid-bg"></div>
             <div class="yellow-glow"></div>
 
-            <i class="floating-icon fa-solid fa-code"></i>
-            <i class="floating-icon fa-solid fa-terminal"></i>
-            <i class="floating-icon fa-solid fa-laptop-code"></i>
-            <i class="floating-icon fa-solid fa-database"></i>
-
             <div class="relative z-10 w-full">
                 <div class="mb-16">
                     <h2 class="stack-header text-yellow-400 mb-5 uppercase tracking-[0.3em] text-sm font-bold">Tech Stack</h2>
@@ -139,7 +120,7 @@
 
                     <div class="stack-item stack-card">
                         <div class="icon-wrap"><i class="fa-brands fa-html5 text-orange-500"></i></div>
-                        <h3 class="tech-name">HTML</h3>
+                        <h3 class="tech-name">HTML5</h3>
                         <p class="tech-desc">Semantic and structured markup for modern web interfaces.</p>
                     </div>
 
@@ -162,33 +143,25 @@
                     </div>
 
                     <div class="stack-item stack-card">
-                        <div class="icon-wrap">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL"/>
-                        </div>
+                        <div class="icon-wrap"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL"/></div>
                         <h3 class="tech-name">MySQL</h3>
                         <p class="tech-desc">Managing relational databases and backend data structures.</p>
                     </div>
 
                     <div class="stack-item stack-card">
-                        <div class="icon-wrap">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" alt="Tailwind"/>
-                        </div>
+                        <div class="icon-wrap"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" alt="Tailwind"/></div>
                         <h3 class="tech-name">Tailwind</h3>
                         <p class="tech-desc">Rapid UI development using utility-first CSS styling.</p>
                     </div>
 
                     <div class="stack-item stack-card">
-                        <div class="icon-wrap">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma"/>
-                        </div>
+                        <div class="icon-wrap"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma"/></div>
                         <h3 class="tech-name">Figma</h3>
                         <p class="tech-desc">Designing modern interfaces and UI/UX prototypes.</p>
                     </div>
 
                     <div class="stack-item stack-card">
-                        <div class="icon-wrap">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="VS Code"/>
-                        </div>
+                        <div class="icon-wrap"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="VS Code"/></div>
                         <h3 class="tech-name">VS Code</h3>
                         <p class="tech-desc">My primary development environment for coding projects.</p>
                     </div>
@@ -213,7 +186,6 @@
     <script>
         anime({ targets: '.stack-header', opacity: [0,1], translateY: [40,0], delay: anime.stagger(120), duration: 1000, easing: 'easeOutExpo' });
         anime({ targets: '.stack-item', opacity: [0,1], translateY: [40,0], scale: [0.9,1], delay: anime.stagger(100,{start:400}), duration: 900, easing: 'easeOutExpo' });
-        anime({ targets: '.floating-icon', opacity: [0,1], scale: [0.5,1], delay: anime.stagger(200), duration: 1500, easing: 'easeOutExpo' });
     </script>
 </body>
 </html>

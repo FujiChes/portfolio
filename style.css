@@ -58,3 +58,10 @@ body { font-family: 'Inter', sans-serif; color: white; margin: 0; }
     width: 100%;
     overflow: hidden;
 }
+
+/* Remove hero background image on mobile */
+@media (max-width: 767px) {
+    .hero-bg {
+        background: #0a0a0a;
+    }
+}

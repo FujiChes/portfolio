@@ -15,46 +15,36 @@
         *{ font-family: 'Inter', sans-serif; }
         body{ background: #0a0a0a; overflow-x: hidden; }
         .font-heading{ font-family: 'Space Grotesk', sans-serif; }
-
         .hero-bg{ position: relative; overflow: hidden; }
-
         .hero-overlay{
             position: absolute; inset: 0;
             background: linear-gradient(to right, rgba(10,10,10,0.95), rgba(10,10,10,0.75), rgba(10,10,10,0.92));
             z-index: 1;
         }
-
         .yellow-glow{
             position: absolute; width: 450px; height: 450px;
             background: rgba(250,204,21,0.10); border-radius: 999px;
             filter: blur(120px); top: -120px; right: -100px; z-index: 1;
         }
-
         .grid-bg{
             position: absolute; inset: 0;
             background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
             background-size: 60px 60px; z-index: 1;
             mask-image: radial-gradient(circle at center, black 35%, transparent 100%);
         }
-
         .profile-wrapper{ position: relative; opacity: 0; flex-shrink: 0; }
-
         .profile-ring{
             position: absolute; inset: -10px;
             border: 2px dashed rgba(250,204,21,0.25);
             border-radius: 999px;
             animation: spin 18s linear infinite;
         }
-
         @keyframes spin{ from{ transform: rotate(0deg); } to{ transform: rotate(360deg); } }
-
         .profile-image{
             position: relative; z-index: 2; object-fit: cover;
             box-shadow: 0 0 50px rgba(250,204,21,0.12), 0 0 120px rgba(250,204,21,0.08);
         }
-
         .hero-text > *{ opacity: 0; }
-
         .hero-btn{ position: relative; overflow: hidden; }
         .hero-btn::before{
             content: ''; position: absolute; top: 0; left: -120%;
@@ -63,10 +53,8 @@
             transform: skewX(-25deg); transition: .7s;
         }
         .hero-btn:hover::before{ left: 120%; }
-
         .social-btn{ transition: all .3s ease; }
         .social-btn:hover{ transform: translateY(-6px); box-shadow: 0 10px 30px rgba(250,204,21,0.12); }
-
         @media(max-width:1024px){
             .hero-container{ text-align: center; }
             .hero-buttons{ justify-content: center; }
@@ -79,34 +67,31 @@
     <nav class="sidebar fixed bottom-0 left-0 w-full h-16 md:h-screen md:w-20 md:top-0 border-t md:border-r md:border-t-0 border-white/10 bg-[#050505] flex md:flex-col items-center z-50 transition-all duration-300 hover:md:w-64">
         <div class="hidden md:block px-6 my-10 text-yellow-400 font-black text-3xl">CB</div>
         <div class="flex md:flex-col justify-around md:justify-start space-y-0 md:space-y-4 w-full px-2">
-            <a href="home.html" class="nav-btn text-yellow-400 bg-white/5 flex items-center gap-4 p-3 rounded-xl w-full">
+            <a href="home.html" class="nav-btn flex items-center gap-4 p-3 rounded-xl w-full">
                 <i class="fa-solid fa-house min-w-[20px] text-center"></i>
                 <span class="sidebar-text font-medium">Home</span>
             </a>
-            <a href="about.html" class="nav-btn text-gray-500 hover:text-yellow-400 flex items-center gap-4 p-3 rounded-xl w-full">
+            <a href="about.html" class="nav-btn flex items-center gap-4 p-3 rounded-xl w-full">
                 <i class="fa-solid fa-user min-w-[20px] text-center"></i>
                 <span class="sidebar-text font-medium">About</span>
             </a>
-            <a href="stack.html" class="nav-btn text-gray-500 hover:text-yellow-400 flex items-center gap-4 p-3 rounded-xl w-full">
+            <a href="stack.html" class="nav-btn flex items-center gap-4 p-3 rounded-xl w-full">
                 <i class="fa-solid fa-code min-w-[20px] text-center"></i>
                 <span class="sidebar-text font-medium">Tech Stack</span>
             </a>
-            <a href="certificates.html" class="nav-btn text-gray-500 hover:text-yellow-400 flex items-center gap-4 p-3 rounded-xl w-full">
+            <a href="certificates.html" class="nav-btn flex items-center gap-4 p-3 rounded-xl w-full">
                 <i class="fa-solid fa-certificate min-w-[20px] text-center"></i>
                 <span class="sidebar-text font-medium">Certificates</span>
             </a>
         </div>
     </nav>
 
-    <!-- Changed: removed "pb-20 md:pb-0" to match second file's section height/centering -->
     <section class="section-fade min-h-screen flex items-center px-6 lg:px-20 hero-bg w-full lg:ml-20 pb-20 lg:pb-0">
-
         <div class="hero-overlay"></div>
         <div class="yellow-glow"></div>
         <div class="grid-bg"></div>
 
         <div class="hero-container relative z-10 flex flex-col lg:flex-row items-center gap-16 w-full">
-
             <div class="profile-wrapper">
                 <div class="profile-ring"></div>
                 <img src="Images/profile4.jpg" alt="Chester Besin"
@@ -156,7 +141,6 @@
                     </a>
                 </div>
             </div>
-
         </div>
     </section>
 
@@ -164,6 +148,6 @@
         anime({ targets: '.profile-wrapper', opacity: [0,1], scale: [0.8,1], duration: 1400, easing: 'easeOutExpo' });
         anime({ targets: '.hero-text > *', opacity: [0,1], translateY: [40,0], delay: anime.stagger(180,{start:300}), duration: 1200, easing: 'easeOutExpo' });
     </script>
-
+    <script src="script.js"></script>
 </body>
 </html>

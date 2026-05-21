@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tech Stack | Chester Besin</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
     <link rel="stylesheet" href="style.css">
 
@@ -17,9 +17,7 @@
         .font-heading{ font-family: 'Space Grotesk', sans-serif; }
         .stack-header{ opacity: 0; }
         .stack-item{ opacity: 0; }
-
         .stack-section{ position: relative; overflow: hidden; }
-
         .grid-bg{
             position: absolute; inset: 0;
             background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
@@ -27,13 +25,11 @@
             mask-image: radial-gradient(circle at center, black 30%, transparent 100%);
             z-index: 1;
         }
-
         .yellow-glow{
             position: absolute; width: 450px; height: 450px;
             background: rgba(250,204,21,0.10); border-radius: 999px;
             filter: blur(120px); top: -120px; right: -100px; z-index: 1;
         }
-
         .stack-card{
             position: relative;
             background: rgba(255,255,255,0.03);
@@ -53,7 +49,6 @@
             border-color: rgba(250,204,21,0.35);
             box-shadow: 0 10px 30px rgba(0,0,0,0.45), 0 0 40px rgba(250,204,21,0.08);
         }
-
         .icon-wrap{
             width: 72px; height: 72px;
             border-radius: 1.25rem;
@@ -67,13 +62,10 @@
             border-color: rgba(250,204,21,0.25);
             background: rgba(250,204,21,0.06);
         }
-
         .icon-wrap i { font-size: 2rem; line-height: 1; }
         .icon-wrap img { width: 36px; height: 36px; object-fit: contain; }
-
         .tech-name{ font-size: 1.05rem; font-weight: 700; color: white; margin-bottom: .45rem; }
         .tech-desc{ font-size: .82rem; line-height: 1.6; color: #9ca3af; }
-
         @media(max-width:768px){ .stack-card{ padding: 1.5rem; } }
     </style>
 </head>
@@ -82,28 +74,27 @@
     <nav class="sidebar fixed bottom-0 left-0 w-full h-16 md:h-screen md:w-20 md:top-0 border-t md:border-r md:border-t-0 border-white/10 bg-[#050505] flex md:flex-col items-center z-50 transition-all duration-300 hover:md:w-64">
         <div class="hidden md:block px-6 my-10 text-yellow-400 font-black text-3xl">CB</div>
         <div class="flex md:flex-col justify-around md:justify-start space-y-0 md:space-y-4 w-full px-2">
-            <a href="home.html" class="nav-btn text-gray-500 hover:text-yellow-400 flex items-center gap-4 p-3 rounded-xl w-full">
+            <a href="home.html" class="nav-btn flex items-center gap-4 p-3 rounded-xl w-full">
                 <i class="fa-solid fa-house min-w-[20px] text-center"></i>
-                <span class="sidebar-text opacity-0 transition-opacity duration-300 font-medium">Home</span>
+                <span class="sidebar-text font-medium">Home</span>
             </a>
-            <a href="about.html" class="nav-btn text-gray-500 hover:text-yellow-400 flex items-center gap-4 p-3 rounded-xl w-full">
+            <a href="about.html" class="nav-btn flex items-center gap-4 p-3 rounded-xl w-full">
                 <i class="fa-solid fa-user min-w-[20px] text-center"></i>
-                <span class="sidebar-text opacity-0 transition-opacity duration-300 font-medium">About</span>
+                <span class="sidebar-text font-medium">About</span>
             </a>
-            <a href="stack.html" class="nav-btn text-yellow-400 bg-white/5 flex items-center gap-4 p-3 rounded-xl w-full">
+            <a href="stack.html" class="nav-btn flex items-center gap-4 p-3 rounded-xl w-full">
                 <i class="fa-solid fa-code min-w-[20px] text-center"></i>
-                <span class="sidebar-text opacity-0 transition-opacity duration-300 font-medium">Tech Stack</span>
+                <span class="sidebar-text font-medium">Tech Stack</span>
             </a>
-            <a href="certificates.html" class="nav-btn text-gray-500 hover:text-yellow-400 flex items-center gap-4 p-3 rounded-xl w-full">
+            <a href="certificates.html" class="nav-btn flex items-center gap-4 p-3 rounded-xl w-full">
                 <i class="fa-solid fa-certificate min-w-[20px] text-center"></i>
-                <span class="sidebar-text opacity-0 transition-opacity duration-300 font-medium">Certificates</span>
+                <span class="sidebar-text font-medium">Certificates</span>
             </a>
         </div>
     </nav>
 
     <main class="w-full md:ml-20 min-h-screen">
         <section class="stack-section min-h-screen flex items-center px-6 md:px-20 py-20 pb-24 md:pb-20">
-
             <div class="grid-bg"></div>
             <div class="yellow-glow"></div>
 
@@ -117,67 +108,56 @@
                 </div>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-
                     <div class="stack-item stack-card">
                         <div class="icon-wrap"><i class="fa-brands fa-html5 text-orange-500"></i></div>
                         <h3 class="tech-name">HTML</h3>
                         <p class="tech-desc">Semantic and structured markup for modern web interfaces.</p>
                     </div>
-
                     <div class="stack-item stack-card">
                         <div class="icon-wrap"><i class="fa-brands fa-css3-alt text-blue-500"></i></div>
                         <h3 class="tech-name">CSS</h3>
                         <p class="tech-desc">Styling responsive layouts with modern animations and effects.</p>
                     </div>
-
                     <div class="stack-item stack-card">
                         <div class="icon-wrap"><i class="fa-brands fa-js text-yellow-400"></i></div>
                         <h3 class="tech-name">JavaScript</h3>
                         <p class="tech-desc">Creating interactive and dynamic frontend experiences.</p>
                     </div>
-
                     <div class="stack-item stack-card">
                         <div class="icon-wrap"><i class="fa-brands fa-java text-red-500"></i></div>
                         <h3 class="tech-name">Java</h3>
                         <p class="tech-desc">Building object-oriented applications and software systems.</p>
                     </div>
-
                     <div class="stack-item stack-card">
                         <div class="icon-wrap"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL"/></div>
                         <h3 class="tech-name">MySQL</h3>
                         <p class="tech-desc">Managing relational databases and backend data structures.</p>
                     </div>
-
                     <div class="stack-item stack-card">
                         <div class="icon-wrap"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" alt="Tailwind"/></div>
                         <h3 class="tech-name">Tailwind</h3>
                         <p class="tech-desc">Rapid UI development using utility-first CSS styling.</p>
                     </div>
-
                     <div class="stack-item stack-card">
                         <div class="icon-wrap"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma"/></div>
                         <h3 class="tech-name">Figma</h3>
                         <p class="tech-desc">Designing modern interfaces and UI/UX prototypes.</p>
                     </div>
-
                     <div class="stack-item stack-card">
                         <div class="icon-wrap"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="VS Code"/></div>
                         <h3 class="tech-name">VS Code</h3>
                         <p class="tech-desc">My primary development environment for coding projects.</p>
                     </div>
-
                     <div class="stack-item stack-card">
                         <div class="icon-wrap"><i class="fa-brands fa-git-alt text-orange-600"></i></div>
                         <h3 class="tech-name">Git</h3>
                         <p class="tech-desc">Version control and collaborative development workflows.</p>
                     </div>
-
                     <div class="stack-item stack-card">
                         <div class="icon-wrap"><i class="fa-brands fa-github text-white"></i></div>
                         <h3 class="tech-name">GitHub</h3>
                         <p class="tech-desc">Hosting repositories and showcasing development projects.</p>
                     </div>
-
                 </div>
             </div>
         </section>
@@ -187,5 +167,6 @@
         anime({ targets: '.stack-header', opacity: [0,1], translateY: [40,0], delay: anime.stagger(120), duration: 1000, easing: 'easeOutExpo' });
         anime({ targets: '.stack-item', opacity: [0,1], translateY: [40,0], scale: [0.9,1], delay: anime.stagger(100,{start:400}), duration: 900, easing: 'easeOutExpo' });
     </script>
+    <script src="script.js"></script>
 </body>
 </html>

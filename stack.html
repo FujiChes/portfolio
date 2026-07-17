@@ -4,76 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tech Stack | Chester Besin</title>
-
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
     <link rel="stylesheet" href="style.css">
-
-    <style>
-        *{ font-family: 'Inter', sans-serif; }
-        body{ background: #0a0a0a; overflow-x: hidden; }
-        .font-heading{ font-family: 'Space Grotesk', sans-serif; }
-        .stack-header{ opacity: 0; }
-        .stack-item{ opacity: 0; }
-        .stack-section{ position: relative; overflow: hidden; }
-        .grid-bg{
-            position: absolute; inset: 0;
-            background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
-            background-size: 60px 60px;
-            mask-image: radial-gradient(circle at center, black 30%, transparent 100%);
-            z-index: 1;
-        }
-        .yellow-glow{
-            position: absolute; width: 450px; height: 450px;
-            background: rgba(250,204,21,0.10); border-radius: 999px;
-            filter: blur(120px); top: -120px; right: -100px; z-index: 1;
-        }
-        .stack-card{
-            position: relative;
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.08);
-            border-radius: 1.5rem; padding: 2rem;
-            transition: all .35s ease;
-            overflow: hidden; backdrop-filter: blur(12px);
-        }
-        .stack-card::before{
-            content: ''; position: absolute; inset: 0;
-            background: linear-gradient(135deg, rgba(250,204,21,0.08), transparent 50%);
-            opacity: 0; transition: .4s;
-        }
-        .stack-card:hover::before{ opacity: 1; }
-        .stack-card:hover{
-            transform: translateY(-10px);
-            border-color: rgba(250,204,21,0.35);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.45), 0 0 40px rgba(250,204,21,0.08);
-        }
-        .icon-wrap{
-            width: 72px; height: 72px;
-            border-radius: 1.25rem;
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.06);
-            display: flex; align-items: center; justify-content: center;
-            margin-bottom: 1.25rem; transition: .35s; flex-shrink: 0;
-        }
-        .stack-card:hover .icon-wrap{
-            transform: scale(1.08);
-            border-color: rgba(250,204,21,0.25);
-            background: rgba(250,204,21,0.06);
-        }
-        .icon-wrap i { font-size: 2rem; line-height: 1; }
-        .icon-wrap img { width: 36px; height: 36px; object-fit: contain; }
-        .tech-name{ font-size: 1.05rem; font-weight: 700; color: white; margin-bottom: .45rem; }
-        .tech-desc{ font-size: .82rem; line-height: 1.6; color: #9ca3af; }
-        @media(max-width:768px){ .stack-card{ padding: 1.5rem; } }
-    </style>
 </head>
-<body class="flex flex-col md:flex-row bg-[#0a0a0a]">
+<body class="flex flex-col lg:flex-row bg-[#0a0a0a]">
 
-    <nav class="sidebar fixed bottom-0 left-0 w-full h-16 md:h-screen md:w-20 md:top-0 border-t md:border-r md:border-t-0 border-white/10 bg-[#050505] flex md:flex-col items-center z-50 transition-all duration-300 hover:md:w-64">
-        <div class="hidden md:block px-6 my-10 text-yellow-400 font-black text-3xl">CB</div>
-        <div class="flex md:flex-col justify-around md:justify-start space-y-0 md:space-y-4 w-full px-2">
+    <nav class="sidebar fixed bottom-0 left-0 w-full h-16 lg:h-screen lg:w-20 lg:top-0 border-t lg:border-r lg:border-t-0 border-white/10 bg-[#050505] flex lg:flex-col items-center z-50 transition-all duration-300 hover:lg:w-64">
+        <div class="hidden lg:block px-6 my-10 text-yellow-400 font-black text-3xl">CB</div>
+        <div class="flex lg:flex-col justify-around lg:justify-start space-y-0 lg:space-y-4 w-full px-2">
             <a href="home.html" class="nav-btn flex items-center gap-4 p-3 rounded-xl w-full">
                 <i class="fa-solid fa-house min-w-[20px] text-center"></i>
                 <span class="sidebar-text font-medium">Home</span>
@@ -93,15 +34,15 @@
         </div>
     </nav>
 
-    <main class="w-full md:ml-20 min-h-screen">
-        <section class="stack-section min-h-screen flex items-center px-6 md:px-20 py-20 pb-24 md:pb-20">
+    <main class="w-full lg:ml-20 min-h-screen">
+        <section class="stack-section min-h-screen flex items-center px-6 lg:px-20 py-20 pb-24 lg:pb-20">
             <div class="grid-bg"></div>
             <div class="yellow-glow"></div>
 
             <div class="relative z-10 w-full">
                 <div class="mb-16">
                     <h2 class="stack-header text-yellow-400 mb-5 uppercase tracking-[0.3em] text-sm font-bold">Tech Stack</h2>
-                    <h1 class="stack-header text-5xl md:text-7xl font-heading font-black text-white leading-tight mb-6">Languages & Tools</h1>
+                    <h1 class="stack-header text-5xl lg:text-7xl font-heading font-black text-white leading-tight mb-6">Languages & Tools</h1>
                     <p class="stack-header text-gray-400 text-lg leading-relaxed max-w-2xl">
                         Technologies and tools I use for building modern, responsive, and user-friendly digital experiences.
                     </p>
@@ -163,10 +104,6 @@
         </section>
     </main>
 
-    <script>
-        anime({ targets: '.stack-header', opacity: [0,1], translateY: [40,0], delay: anime.stagger(120), duration: 1000, easing: 'easeOutExpo' });
-        anime({ targets: '.stack-item', opacity: [0,1], translateY: [40,0], scale: [0.9,1], delay: anime.stagger(100,{start:400}), duration: 900, easing: 'easeOutExpo' });
-    </script>
     <script src="script.js"></script>
 </body>
 </html>

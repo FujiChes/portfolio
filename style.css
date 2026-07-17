@@ -5,63 +5,243 @@ html, body {
     margin: 0;
     padding: 0;
 }
-
 body { font-family: 'Inter', sans-serif; color: white; margin: 0; }
 .font-heading { font-family: 'Space Grotesk', sans-serif; }
 
-/* Sidebar */
+/* ─── Sidebar ─── */
 .sidebar { transition: width .4s ease; background: #050505 !important; }
 
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
     .sidebar:hover { width: 240px; }
     .sidebar-text { opacity: 0; transition: opacity .3s; margin-left: 1.5rem; white-space: nowrap; font-size: 0.7rem; text-transform: uppercase; }
     .sidebar:hover .sidebar-text { opacity: 1; }
 }
 
-/* Nav Buttons */
 .nav-btn { display: flex; align-items: center; justify-content: center; width: 100%; padding: 1.2rem; color: #6b7280; transition: 0.3s; border-radius: 0.5rem; }
-@media (min-width: 768px) { .nav-btn { justify-content: flex-start; padding-left: 1.5rem; } }
-.nav-btn.active, .nav-btn:hover { color: #facc15; background: rgba(255, 255, 255, 0.05); }
+@media (min-width: 1024px) { .nav-btn { justify-content: flex-start; padding-left: 1.5rem; } }
+.nav-btn.active, .nav-btn:hover { color: #facc15; background: rgba(255,255,255,0.05); }
 
-/* Hide sidebar text labels on mobile — icons only */
-@media (max-width: 767px) {
+@media (max-width: 1023px) {
     .sidebar-text { display: none !important; }
     .nav-btn { padding: 0.75rem; }
 }
 
-/* Section Animations */
+/* ─── Section Animations ─── */
 .section-fade { animation: fadeInUp 0.6s ease-out; }
 @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
-/* Tech Stack Items */
-.stack-item {
-    padding: 2rem;
-    background: rgba(255,255,255,0.03);
-    border-radius: 1rem;
-    text-align: center;
-    transition: 0.3s;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-.stack-item:hover { background: #facc15; color: black; transform: translateY(-5px); }
-.stack-item:hover img { filter: brightness(0); }
-.stack-item:hover i { color: black !important; }
-
-/* Hero BG */
-.hero-bg { 
-    background: linear-gradient(to right, #0a0a0a 30%, transparent 100%), 
+/* ─── Hero BG ─── */
+.hero-bg {
+    background: linear-gradient(to right, #0a0a0a 30%, transparent 100%),
                 url('Images/profile1.jpg');
-    background-size: cover; 
+    background-size: cover;
     background-position: center;
     width: 100%;
     overflow: hidden;
 }
+@media (max-width: 1023px) {
+    .hero-bg { background: #0a0a0a; }
+}
 
-/* Remove hero background image on mobile */
-@media (max-width: 767px) {
-    .hero-bg {
-        background: #0a0a0a;
+/* ─── Home Page ─── */
+.hero-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to right, rgba(10,10,10,0.95), rgba(10,10,10,0.75), rgba(10,10,10,0.92));
+    z-index: 1;
+}
+.yellow-glow {
+    position: absolute; width: 450px; height: 450px;
+    background: rgba(250,204,21,0.10); border-radius: 999px;
+    filter: blur(120px); top: -120px; right: -100px; z-index: 1;
+}
+.grid-bg {
+    position: absolute; inset: 0;
+    background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 60px 60px; z-index: 1;
+    mask-image: radial-gradient(circle at center, black 35%, transparent 100%);
+}
+.profile-wrapper { position: relative; opacity: 0; flex-shrink: 0; }
+.profile-ring {
+    position: absolute; inset: -10px;
+    border: 2px dashed rgba(250,204,21,0.25);
+    border-radius: 999px;
+    animation: spin 18s linear infinite;
+}
+@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+.profile-image {
+    position: relative; z-index: 2; object-fit: cover;
+    box-shadow: 0 0 50px rgba(250,204,21,0.12), 0 0 120px rgba(250,204,21,0.08);
+}
+.hero-text > * { opacity: 0; }
+.hero-btn { position: relative; overflow: hidden; }
+.hero-btn::before {
+    content: ''; position: absolute; top: 0; left: -120%;
+    width: 100%; height: 100%;
+    background: rgba(255,255,255,0.2);
+    transform: skewX(-25deg); transition: .7s;
+}
+.hero-btn:hover::before { left: 120%; }
+.social-btn { transition: all .3s ease; }
+.social-btn:hover { transform: translateY(-6px); box-shadow: 0 10px 30px rgba(250,204,21,0.12); }
+@media(max-width:1024px) {
+    .hero-container { text-align: center; }
+    .hero-buttons { justify-content: center; }
+    .socials { justify-content: center; }
+}
+
+/* ─── About Page ─── */
+.about-section { position: relative; overflow: hidden; }
+.about-left, .about-right, .about-tag, .info-card { opacity: 0; }
+.image-wrapper { position: relative; }
+.image-wrapper::before {
+    content: ''; position: absolute; inset: -12px;
+    border: 1px solid rgba(250,204,21,0.18);
+    border-radius: 2.5rem; z-index: 1;
+}
+.image-card {
+    position: relative; overflow: hidden;
+    border-radius: 2.5rem;
+    border: 1px solid rgba(255,255,255,0.08);
+    background: rgba(255,255,255,0.02);
+    backdrop-filter: blur(10px); z-index: 2;
+}
+.image-card img { transition: transform .6s ease; }
+.image-card:hover img { transform: scale(1.08); }
+.floating-badge {
+    position: absolute; bottom: 25px; left: -20px;
+    background: rgba(17,17,17,0.95);
+    border: 1px solid rgba(250,204,21,0.15);
+    backdrop-filter: blur(10px);
+    padding: 1rem 1.2rem; border-radius: 1.25rem;
+    z-index: 3; box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    animation: badgeFloat 3s ease-in-out infinite;
+}
+@keyframes badgeFloat { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+.about-tag { transition: all .3s ease; }
+.about-tag:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(250,204,21,0.08); border-color: rgba(250,204,21,0.4); }
+.info-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06);
+    backdrop-filter: blur(10px); transition: all .3s ease;
+}
+.info-card:hover { transform: translateY(-6px); border-color: rgba(250,204,21,0.25); box-shadow: 0 15px 35px rgba(250,204,21,0.08); }
+@media(max-width:1024px) {
+    .about-left { text-align: center; }
+    .tags-container { justify-content: center; }
+    .bottom-line { justify-content: center; }
+}
+
+/* ─── Tech Stack Page ─── */
+.stack-section { position: relative; overflow: hidden; }
+.stack-header { opacity: 0; }
+.stack-item { opacity: 0; }
+.stack-card {
+    position: relative;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 1.5rem; padding: 2rem;
+    transition: all .35s ease;
+    overflow: hidden; backdrop-filter: blur(12px);
+}
+.stack-card::before {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(250,204,21,0.08), transparent 50%);
+    opacity: 0; transition: .4s;
+}
+@media(hover: hover) {
+    .stack-card:hover::before { opacity: 1; }
+    .stack-card:hover {
+        transform: translateY(-10px);
+        border-color: rgba(250,204,21,0.35);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.45), 0 0 40px rgba(250,204,21,0.08);
     }
+    .stack-card:hover .icon-wrap {
+        transform: scale(1.08);
+        border-color: rgba(250,204,21,0.25);
+        background: rgba(250,204,21,0.06);
+    }
+}
+@media(hover: none) {
+    .stack-card {
+        border-color: rgba(250,204,21,0.2);
+        box-shadow: 0 4px 20px rgba(0,0,0,0.3), 0 0 20px rgba(250,204,21,0.05);
+    }
+    .stack-card::before { opacity: 1; }
+    .icon-wrap {
+        border-color: rgba(250,204,21,0.2);
+        background: rgba(250,204,21,0.04);
+    }
+}
+.icon-wrap {
+    width: 72px; height: 72px;
+    border-radius: 1.25rem;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 1.25rem; transition: .35s; flex-shrink: 0;
+}
+.icon-wrap i { font-size: 2rem; line-height: 1; }
+.icon-wrap img { width: 36px; height: 36px; object-fit: contain; }
+.tech-name { font-size: 1.05rem; font-weight: 700; color: white; margin-bottom: .45rem; }
+.tech-desc { font-size: .82rem; line-height: 1.6; color: #9ca3af; }
+@media(max-width:1024px) { .stack-card { padding: 1.5rem; } }
+
+/* ─── Certificates Page ─── */
+.cert-header { opacity: 0; }
+.cert-card {
+    opacity: 0; cursor: pointer; position: relative;
+    transition: all .35s ease;
+}
+.cert-card:hover { transform: translateY(-10px); box-shadow: 0 20px 50px rgba(250,204,21,0.08); }
+.cert-card::before {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(250,204,21,0.08), transparent);
+    opacity: 0; transition: opacity .4s ease; pointer-events: none;
+}
+.cert-card:hover::before { opacity: 1; }
+.cert-image { width: 100%; height: auto; object-fit: contain; transition: transform .5s ease; }
+#cert-modal {
+    display: none; position: fixed; inset: 0; z-index: 999;
+    background: rgba(0,0,0,0.90); backdrop-filter: blur(10px);
+    align-items: center; justify-content: center; padding: 1.5rem;
+}
+#cert-modal.open { display: flex; }
+.modal-box {
+    background: #111; border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 1.5rem; width: 100%; max-width: 720px;
+    overflow: hidden; position: relative;
+}
+.modal-box img { width: 100%; max-height: 75vh; object-fit: contain; background: #000; }
+.modal-content { padding: 1.5rem; }
+.close-btn {
+    position: absolute; top: 1rem; right: 1rem;
+    width: 2.2rem; height: 2.2rem; border-radius: 999px;
+    border: 1px solid rgba(255,255,255,0.1);
+    background: rgba(255,255,255,0.05);
+    color: white; cursor: pointer; transition: .3s ease; z-index: 5;
+}
+.close-btn:hover { background: rgba(250,204,21,0.15); color: #facc15; }
+.shine {
+    position: absolute; width: 120px; height: 300%;
+    background: rgba(255,255,255,0.05);
+    transform: rotate(25deg); top: -120%; left: -200%; transition: 0.8s;
+}
+.cert-card:hover .shine { left: 180%; }
+@media(max-width:1024px) { .modal-content { padding: 1rem; } }
+
+/* ─── Pulse ring animation for profile ─── */
+@keyframes pulseRing {
+    0% { box-shadow: 0 0 0 0 rgba(250,204,21,0.3); }
+    70% { box-shadow: 0 0 0 20px rgba(250,204,21,0); }
+    100% { box-shadow: 0 0 0 0 rgba(250,204,21,0); }
+}
+.profile-image { animation: pulseRing 3s ease-out infinite; }
+
+/* ─── Cursor glow trail ─── */
+.cursor-glow {
+    position: fixed; pointer-events: none; z-index: 9999;
+    width: 300px; height: 300px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(250,204,21,0.06) 0%, transparent 70%);
+    transform: translate(-50%, -50%);
+    transition: left 0.08s ease, top 0.08s ease;
 }

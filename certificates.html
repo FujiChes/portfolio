@@ -4,64 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Certificates | Chester Besin</title>
-
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
     <link rel="stylesheet" href="style.css">
-
-    <style>
-        *{ font-family: 'Inter', sans-serif; }
-        body{ background: #0a0a0a; overflow-x: hidden; }
-        .font-heading{ font-family: 'Space Grotesk', sans-serif; }
-        .cert-header{ opacity: 0; }
-        .cert-card{
-            opacity: 0; cursor: pointer; position: relative;
-            transition: all .35s ease;
-        }
-        .cert-card:hover{ transform: translateY(-10px); box-shadow: 0 20px 50px rgba(250,204,21,0.08); }
-        .cert-card::before{
-            content: ''; position: absolute; inset: 0;
-            background: linear-gradient(180deg, rgba(250,204,21,0.08), transparent);
-            opacity: 0; transition: opacity .4s ease; pointer-events: none;
-        }
-        .cert-card:hover::before{ opacity: 1; }
-        .cert-image{ width: 100%; height: auto; object-fit: contain; transition: transform .5s ease; }
-        #cert-modal{
-            display: none; position: fixed; inset: 0; z-index: 999;
-            background: rgba(0,0,0,0.90); backdrop-filter: blur(10px);
-            align-items: center; justify-content: center; padding: 1.5rem;
-        }
-        #cert-modal.open{ display: flex; }
-        .modal-box{
-            background: #111; border: 1px solid rgba(255,255,255,0.08);
-            border-radius: 1.5rem; width: 100%; max-width: 720px;
-            overflow: hidden; position: relative;
-        }
-        .modal-box img{ width: 100%; max-height: 75vh; object-fit: contain; background: #000; }
-        .modal-content{ padding: 1.5rem; }
-        .close-btn{
-            position: absolute; top: 1rem; right: 1rem;
-            width: 2.2rem; height: 2.2rem; border-radius: 999px;
-            border: 1px solid rgba(255,255,255,0.1);
-            background: rgba(255,255,255,0.05);
-            color: white; cursor: pointer; transition: .3s ease; z-index: 5;
-        }
-        .close-btn:hover{ background: rgba(250,204,21,0.15); color: #facc15; }
-        .shine{
-            position: absolute; width: 120px; height: 300%;
-            background: rgba(255,255,255,0.05);
-            transform: rotate(25deg); top: -120%; left: -200%; transition: 0.8s;
-        }
-        .cert-card:hover .shine{ left: 180%; }
-        @media(max-width:768px){ .modal-content{ padding: 1rem; } }
-    </style>
 </head>
-<body class="flex flex-col md:flex-row bg-[#0a0a0a]">
+<body class="flex flex-col lg:flex-row bg-[#0a0a0a]">
 
-    <nav class="sidebar fixed bottom-0 left-0 w-full h-16 md:h-screen md:w-20 md:top-0 border-t md:border-r md:border-t-0 border-white/10 bg-[#050505] flex md:flex-col items-center z-50 transition-all duration-300 hover:md:w-64">
-        <div class="hidden md:block px-6 my-10 text-yellow-400 font-black text-3xl">CB</div>
-        <div class="flex md:flex-col justify-around md:justify-start space-y-0 md:space-y-4 w-full px-2">
+    <nav class="sidebar fixed bottom-0 left-0 w-full h-16 lg:h-screen lg:w-20 lg:top-0 border-t lg:border-r lg:border-t-0 border-white/10 bg-[#050505] flex lg:flex-col items-center z-50 transition-all duration-300 hover:lg:w-64">
+        <div class="hidden lg:block px-6 my-10 text-yellow-400 font-black text-3xl">CB</div>
+        <div class="flex lg:flex-col justify-around lg:justify-start space-y-0 lg:space-y-4 w-full px-2">
             <a href="home.html" class="nav-btn flex items-center gap-4 p-3 rounded-xl w-full">
                 <i class="fa-solid fa-house min-w-[20px] text-center"></i>
                 <span class="sidebar-text font-medium">Home</span>
@@ -81,16 +34,16 @@
         </div>
     </nav>
 
-    <main class="w-full md:ml-20 min-h-screen">
-        <section id="certificates" class="min-h-screen px-6 md:px-20 py-20 flex items-center pb-24 md:pb-20">
+    <main class="w-full lg:ml-20 min-h-screen">
+        <section id="certificates" class="min-h-screen px-6 lg:px-20 py-20 flex items-center pb-24 lg:pb-20">
             <div class="w-full">
                 <h2 class="cert-header text-yellow-400 uppercase tracking-[0.25em] text-sm font-bold mb-5">Achievements</h2>
-                <h1 class="cert-header text-white text-4xl md:text-6xl font-black font-heading mb-6 leading-tight">My Certifications</h1>
+                <h1 class="cert-header text-white text-4xl lg:text-6xl font-black font-heading mb-6 leading-tight">My Certifications</h1>
                 <p class="cert-header text-gray-400 text-lg max-w-2xl mb-16 leading-relaxed">
                     Certifications I've earned through continuous learning and dedication. Each certification image shows an enlarged image when clicked.
                 </p>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
 
                     <div class="cert-card bg-white/[0.03] border border-white/5 rounded-3xl overflow-hidden"
                          onclick="openModal('Images/database-cert.jpg', 'Introduction to Modern Database Systems', 'https://learn.saylor.org/admin/tool/certificate/index.php')">
@@ -174,31 +127,6 @@
         </div>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
-    <script>
-        anime({ targets: '.cert-header', opacity: [0,1], translateY: [40,0], delay: anime.stagger(120), duration: 900, easing: 'easeOutExpo' });
-        anime({ targets: '.cert-card', opacity: [0,1], translateY: [60,0], delay: anime.stagger(180,{start:400}), duration: 900, easing: 'easeOutExpo' });
-
-        function openModal(imgSrc, title, link){
-            document.getElementById('modal-img').src = imgSrc;
-            document.getElementById('modal-title').textContent = title;
-            document.getElementById('modal-link').href = link;
-            document.getElementById('cert-modal').classList.add('open');
-            anime({ targets: '.modal-box', opacity: [0,1], scale: [0.9,1], duration: 400, easing: 'easeOutExpo' });
-        }
-
-        function closeModal(){
-            document.getElementById('cert-modal').classList.remove('open');
-        }
-
-        document.getElementById('cert-modal').addEventListener('click', function(e){
-            if(e.target === this) closeModal();
-        });
-
-        document.addEventListener('keydown', function(e){
-            if(e.key === 'Escape') closeModal();
-        });
-    </script>
     <script src="script.js"></script>
 </body>
 </html>

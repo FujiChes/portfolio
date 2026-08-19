@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects | Chester Besin</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="flex flex-col lg:flex-row bg-[#0a0a0a]">
+
+    <nav class="sidebar fixed bottom-0 left-0 w-full h-16 lg:h-screen lg:w-20 lg:top-0 border-t lg:border-r lg:border-t-0 border-white/10 bg-[#050505] flex lg:flex-col items-center z-50 transition-all duration-300 hover:lg:w-64">
+        <div class="hidden lg:block px-6 my-10 text-yellow-400 font-black text-3xl">CB</div>
+        <div class="flex lg:flex-col justify-around lg:justify-start space-y-0 lg:space-y-4 w-full px-2">
+            <a href="home.html" class="nav-btn text-gray-500 hover:text-yellow-400 flex items-center gap-4 p-3 rounded-xl w-full">
+                <i class="fa-solid fa-house min-w-[20px] text-center"></i>
+                <span class="sidebar-text font-medium">Home</span>
+            </a>
+            <a href="about.html" class="nav-btn text-gray-500 hover:text-yellow-400 flex items-center gap-4 p-3 rounded-xl w-full">
+                <i class="fa-solid fa-user min-w-[20px] text-center"></i>
+                <span class="sidebar-text font-medium">About</span>
+            </a>
+            <a href="stack.html" class="nav-btn text-gray-500 hover:text-yellow-400 flex items-center gap-4 p-3 rounded-xl w-full">
+                <i class="fa-solid fa-code min-w-[20px] text-center"></i>
+                <span class="sidebar-text font-medium">Tech Stack</span>
+            </a>
+            <a href="certificates.html" class="nav-btn text-gray-500 hover:text-yellow-400 flex items-center gap-4 p-3 rounded-xl w-full">
+                <i class="fa-solid fa-certificate min-w-[20px] text-center"></i>
+                <span class="sidebar-text font-medium">Certificates</span>
+            </a>
+            <a href="projects.html" class="nav-btn text-yellow-400 bg-white/5 flex items-center gap-4 p-3 rounded-xl w-full">
+                <i class="fa-solid fa-diagram-project min-w-[20px] text-center"></i>
+                <span class="sidebar-text font-medium">Projects</span>
+            </a>
+        </div>
+    </nav>
+
+    <main class="w-full lg:ml-20 min-h-screen">
+        <section class="proj-section min-h-screen px-6 lg:px-20 py-20 pb-24 lg:pb-20 relative overflow-hidden">
+            <div class="grid-bg"></div>
+            <div class="yellow-glow"></div>
+
+            <div class="relative z-10 w-full">
+                <h2 class="proj-header text-yellow-400 uppercase tracking-[0.25em] text-sm font-bold mb-5">Work</h2>
+                <h1 class="proj-header text-white text-4xl lg:text-6xl font-black font-heading mb-6 leading-tight">My Projects</h1>
+                <p class="proj-header text-gray-400 text-lg max-w-2xl mb-16 leading-relaxed">
+                    A collection of projects I've designed and built. Click any card to view an enlarged preview.
+                </p>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+
+                    <!-- Student Handbook Cover Design -->
+                    <div class="proj-card bg-white/[0.03] border border-white/5 rounded-3xl overflow-hidden cursor-pointer"
+                         onclick="openModal('Images/student-handbook.png', 'Student Handbook Cover Design', '')">
+                        <div class="shine"></div>
+                        <div class="overflow-hidden bg-black flex items-center justify-center p-3">
+                            <img src="Images/photo1.jpg.jpg" alt="Student Handbook Cover Design" class="cert-image">
+                        </div>
+                        <div class="p-8 flex flex-col h-full">
+                            <div class="w-14 h-14 rounded-2xl bg-yellow-400/10 flex items-center justify-center mb-6">
+                                <i class="fa-solid fa-paintbrush text-yellow-400 text-xl"></i>
+                            </div>
+                            <span class="mb-5 text-[10px] uppercase tracking-[0.25em] text-yellow-400 border border-yellow-400/30 bg-yellow-400/10 px-3 py-1 rounded-full font-bold w-fit">UI/UX Design</span>
+                            <h3 class="text-white text-2xl font-bold mb-2">Student Handbook Cover Design</h3>
+                            <p class="text-gray-500 text-sm mb-8">Charis Christian Institute · Design Suggestion</p>
+                            <div class="border-t border-white/5 pt-5 space-y-3 text-sm">
+                                <div class="flex justify-between"><span class="text-gray-500">Type</span><span class="text-white">Print & UI Design</span></div>
+                                <div class="flex justify-between"><span class="text-gray-500">Tools</span><span class="text-white">Figma</span></div>
+                                <div class="flex justify-between"><span class="text-gray-500">Colors</span><span class="text-white">Maroon & Bright Yellow</span></div>
+                                <div class="flex justify-between"><span class="text-gray-500">Focus</span><span class="text-white">Typography & Layout</span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Add more project cards here -->
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal -->
+    <div id="cert-modal">
+        <div class="modal-box">
+            <button class="close-btn" onclick="closeModal()"><i class="fas fa-times"></i></button>
+            <img id="modal-img" src="" alt="Project Preview">
+            <div class="modal-content">
+                <div class="flex items-center justify-between gap-4 flex-wrap">
+                    <div>
+                        <h3 id="modal-title" class="text-white text-xl font-bold"></h3>
+                        <p class="text-gray-500 text-sm mt-1">Project preview.</p>
+                    </div>
+                    <a id="modal-link" href="#" target="_blank"
+                       class="border border-yellow-400/30 text-yellow-400 hover:bg-yellow-400/10 transition px-4 py-2 rounded-xl text-sm">
+                        View Project <i class="fa-solid fa-arrow-up-right-from-square ml-1"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

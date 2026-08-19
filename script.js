@@ -51,6 +51,22 @@ if (document.querySelector('.cert-header')) {
     anime({ targets: '.cert-card',   opacity: [0,1], translateY: [60,0], delay: anime.stagger(180,{start:400}), duration: 900, easing: 'easeOutExpo' });
 }
 
+/* ─── Projects page animations ─── */
+if (document.querySelector('.proj-header')) {
+    anime({ targets: '.proj-header', opacity: [0,1], translateY: [40,0], delay: anime.stagger(120), duration: 900, easing: 'easeOutExpo' });
+    anime({ targets: '.proj-card',   opacity: [0,1], translateY: [60,0], scale: [0.95,1], delay: anime.stagger(150,{start:400}), duration: 900, easing: 'easeOutExpo' });
+}
+
+/* ─── Fallback: make sure nothing stays invisible ─── */
+window.addEventListener('load', () => {
+    document.querySelectorAll('.proj-header, .proj-card, .stack-header, .stack-item, .cert-header, .cert-card, .about-left, .about-right, .about-tag, .info-card, .profile-wrapper, .hero-text > *').forEach(el => {
+        if (getComputedStyle(el).opacity === '0') {
+            el.style.opacity = '1';
+            el.style.transform = 'none';
+        }
+    });
+});
+
 /* ─── Certificate modal ─── */
 if (document.getElementById('cert-modal')) {
     window.openModal = function(imgSrc, title, link) {

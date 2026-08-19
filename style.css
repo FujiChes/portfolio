@@ -229,13 +229,12 @@ body { font-family: 'Inter', sans-serif; color: white; margin: 0; }
 .cert-card:hover .shine { left: 180%; }
 @media(max-width:1024px) { .modal-content { padding: 1rem; } }
 
-/* ─── Pulse ring animation for profile ─── */
-@keyframes pulseRing {
-    0% { box-shadow: 0 0 0 0 rgba(250,204,21,0.3); }
-    70% { box-shadow: 0 0 0 20px rgba(250,204,21,0); }
-    100% { box-shadow: 0 0 0 0 rgba(250,204,21,0); }
-}
-.profile-image { animation: pulseRing 3s ease-out infinite; }
+
+
+/* ─── Projects Page ─── */
+.proj-section { position: relative; overflow: hidden; }
+.proj-header { opacity: 0; transform: translateY(40px); }
+.proj-card { opacity: 0; transform: translateY(60px); }
 
 /* ─── Cursor glow trail ─── */
 .cursor-glow {
